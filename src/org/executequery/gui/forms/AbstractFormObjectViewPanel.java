@@ -37,8 +37,8 @@ import org.underworldlabs.swing.GradientLabel;
 /**
  *
  * @author   Takis Diakoumis
- * @version  $Revision: 1780 $
- * @date     $Date: 2017-09-03 15:52:36 +1000 (Sun, 03 Sep 2017) $
+ * @version  $Revision: 1783 $
+ * @date     $Date: 2017-09-19 00:04:44 +1000 (Tue, 19 Sep 2017) $
  */
 public abstract class AbstractFormObjectViewPanel extends JPanel
                                                   implements FormObjectView {
@@ -125,9 +125,9 @@ public abstract class AbstractFormObjectViewPanel extends JPanel
         this.reload = reload;
     }
 
-    protected String bundleString(String key)
-    {
-        return Bundles.get(getClass(),key);
+    protected String bundleString(String key) {
+
+        return Bundles.get(getClass(), key);
     }
     
 }

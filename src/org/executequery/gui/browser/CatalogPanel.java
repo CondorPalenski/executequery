@@ -34,8 +34,8 @@ import org.underworldlabs.jdbc.DataSourceException;
 /**
  *
  * @author   Takis Diakoumis
- * @version  $Revision: 1780 $
- * @date     $Date: 2017-09-03 15:52:36 +1000 (Sun, 03 Sep 2017) $
+ * @version  $Revision: 1783 $
+ * @date     $Date: 2017-09-19 00:04:44 +1000 (Tue, 19 Sep 2017) $
  */
 public class CatalogPanel extends BrowserNodeBasePanel {
     
@@ -80,7 +80,7 @@ public class CatalogPanel extends BrowserNodeBasePanel {
 
     protected String getPrintablePrefixLabel() {
 
-        return bundleString("DatabaseCatalog")+": ";
+        return bundleString("DatabaseCatalog") + ": ";
     }
 
     public void refresh() {}
@@ -155,14 +155,3 @@ public class CatalogPanel extends BrowserNodeBasePanel {
     }
     
 }
-
-
-
-
-
-
-
-
-
-
-

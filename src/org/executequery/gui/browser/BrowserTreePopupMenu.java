@@ -42,8 +42,8 @@ import org.underworldlabs.swing.menu.MenuItemFactory;
 /**
  *
  * @author   Takis Diakoumis
- * @version  $Revision: 1780 $
- * @date     $Date: 2017-09-03 15:52:36 +1000 (Sun, 03 Sep 2017) $
+ * @version  $Revision: 1783 $
+ * @date     $Date: 2017-09-19 00:04:44 +1000 (Tue, 19 Sep 2017) $
  */
 class BrowserTreePopupMenu extends JPopupMenu {
 
@@ -275,7 +275,10 @@ class BrowserTreePopupMenu extends JPopupMenu {
     protected TreePath getCurrentPath() {
         return listener.getCurrentPath();
     }
-    private String bundleString(String key){return Bundles.get(getClass(),key);}
+
+    private String bundleString(String key) {
+        return Bundles.get(getClass(), key);
+    }
 
 }
 

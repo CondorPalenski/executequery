@@ -29,8 +29,8 @@ import org.executequery.localization.Bundles;
  *  use of the same String objects in many places.
  *
  * @author   Takis Diakoumis
- * @version  $Revision: 1780 $
- * @date     $Date: 2017-09-03 15:52:36 +1000 (Sun, 03 Sep 2017) $
+ * @version  $Revision: 1783 $
+ * @date     $Date: 2017-09-19 00:04:44 +1000 (Tue, 19 Sep 2017) $
  */
 public class BrowserConstants {
     
@@ -225,9 +225,10 @@ public class BrowserConstants {
                                                FOLDER_INDEXES_IMAGE,
                                                FOLDER_PRIMARY_KEYS_IMAGE
                                                };
-    public static String bundleString(String key)
-    {
-        return Bundles.get(BrowserConstants.class,key);
+
+    private static String bundleString(String key) {
+
+        return Bundles.get(BrowserConstants.class, key);
     }
 }
 
