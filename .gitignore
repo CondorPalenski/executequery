@@ -4,3 +4,9 @@ eq.jar
 /temp/
 .classpath
 .project
+
+\.idea/
+
+*.iml
+
+out/
