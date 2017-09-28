@@ -30,6 +30,7 @@ import javax.swing.table.AbstractTableModel;
 import org.executequery.GUIUtilities;
 import org.executequery.databaseobjects.DatabaseSchema;
 import org.executequery.databaseobjects.SimpleDatabaseObject;
+import org.executequery.localization.Bundles;
 import org.underworldlabs.jdbc.DataSourceException;
 
 /**
@@ -63,7 +64,7 @@ public class SchemaPanel extends BrowserNodeBasePanel {
     
     private void init() throws Exception {
 
-        noResultsLabel = new JLabel("No information for this object is available.",
+        noResultsLabel = new JLabel(Bundles.getCommon("no-information-for-object"),
                                     JLabel.CENTER);
 
         JTable table = table();
@@ -72,14 +73,14 @@ public class SchemaPanel extends BrowserNodeBasePanel {
         table.getColumnModel().getColumn(2).setPreferredWidth(150);
         table.getColumnModel().getColumn(3).setPreferredWidth(100);
         
-        tablePanel().setBorder(BorderFactory.createTitledBorder("Available Objects"));
-        setHeaderText("Database Schema");
+        tablePanel().setBorder(BorderFactory.createTitledBorder(Bundles.getCommon("available-objects")));
+        setHeaderText(bundleString("title"));
         setHeaderIcon(GUIUtilities.loadIcon("User24.png"));
     }
     
     protected String getPrintablePrefixLabel() {
 
-        return "Database Schema: ";
+        return bundleString("title")+": ";
     }
     
     public String getLayoutName() {
@@ -123,7 +124,7 @@ public class SchemaPanel extends BrowserNodeBasePanel {
     private class SchemaModel extends AbstractTableModel {
 
         private List<SimpleDatabaseObject> values;
-        private String[] header = {"Catalog","Schema","Name","Type","Remarks"};
+        private String[] header = Bundles.get(SchemaPanel.class,new String[]{"Catalog","Schema","Name","Type","Remarks"});
         
         public SchemaModel() {}
         

@@ -49,6 +49,7 @@ import org.executequery.event.KeywordListener;
 import org.executequery.gui.databaseobjects.DefaultDatabaseObjectTable;
 import org.executequery.gui.forms.AbstractFormObjectViewPanel;
 import org.executequery.gui.text.SimpleSqlTextPanel;
+import org.executequery.localization.Bundles;
 import org.executequery.print.TablePrinter;
 import org.executequery.sql.SQLFormatter;
 import org.underworldlabs.Constants;
@@ -128,7 +129,7 @@ public class ObjectDefinitionPanel extends AbstractFormObjectViewPanel
     
     private void jbInit() throws Exception {
         
-        noResultsLabel = new JLabel("No information for this object is available.",
+        noResultsLabel = new JLabel(Bundles.getCommon("no-information-for-object"),
                                     JLabel.CENTER);
         
         JPanel descPanel = new JPanel(new GridBagLayout());
@@ -143,7 +144,7 @@ public class ObjectDefinitionPanel extends AbstractFormObjectViewPanel
         gbc.fill = GridBagConstraints.BOTH;
         gbc.gridx = 0;
         gbc.gridy = 0;
-        descPanel.add(new JLabel("Name:"), gbc);
+        descPanel.add(new JLabel(Bundles.getCommon("name")+":"), gbc);
         gbc.insets.left = 5;
         gbc.insets.right = 5;
         gbc.gridx = 1;
@@ -160,7 +161,7 @@ public class ObjectDefinitionPanel extends AbstractFormObjectViewPanel
         
         // configure the table column descriptions panel
         descBottomPanel = new JPanel(new BorderLayout());
-        descBottomPanel.setBorder(BorderFactory.createTitledBorder("Columns"));
+        descBottomPanel.setBorder(BorderFactory.createTitledBorder(bundleString("Columns")));
         
         tableDataPanel = new TableDataTab(true);
         tablePrivilegePanel = new TablePrivilegeTab();
@@ -170,11 +171,11 @@ public class ObjectDefinitionPanel extends AbstractFormObjectViewPanel
         sqlTextPanel = new SimpleSqlTextPanel();
         
         tabPane = new JTabbedPane();
-        tabPane.add("Description", descBottomPanel);
-        tabPane.add("Privileges", tablePrivilegePanel);
-        tabPane.add("Data", tableDataPanel);
-        tabPane.add("SQL", sqlTextPanel);
-        tabPane.add("Meta Data", metaDataPanel);
+        tabPane.add(Bundles.getCommon("description"), descBottomPanel);
+        tabPane.add(Bundles.getCommon("privileges"), tablePrivilegePanel);
+        tabPane.add(Bundles.getCommon("data"), tableDataPanel);
+        tabPane.add(Bundles.getCommon("SQL"), sqlTextPanel);
+        tabPane.add(Bundles.getCommon("metadata"), metaDataPanel);
         
         // add the tab pane
         gbc.gridy = 2;
@@ -196,7 +197,7 @@ public class ObjectDefinitionPanel extends AbstractFormObjectViewPanel
             icons[i] = GUIUtilities.loadIcon(BrowserConstants.META_TYPE_ICONS[i]);
         }
         
-        setHeader("Database Object", icons[0]);
+        setHeader(Bundles.getCommon("database-object"), icons[0]);
         setContentPanel(descPanel);
         //cache = new HashMap();
     }
@@ -212,24 +213,24 @@ public class ObjectDefinitionPanel extends AbstractFormObjectViewPanel
             
             case 0:
                 return new TablePrinter(tableDescriptionTable,
-                                        "Table: " + currentObjectView.getName());
+                        bundleString("Table") + currentObjectView.getName());
 
             case 1:
                 return new TablePrinter(tablePrivilegePanel.getTable(),
-                                        "Access rights for table: " + 
+                        bundleString("privileges") +
                                                     currentObjectView.getName());
                 
             case 2:
                 return new TablePrinter(tableDataPanel.getTable(),
-                                        "Table Data: " + currentObjectView.getName());
+                        bundleString("TableData") + currentObjectView.getName());
                 
             case 3:
                 return new TablePrinter(tableDataPanel.getTable(),
-                        "Table Data: " + currentObjectView.getName());
+                        bundleString("TableData") + currentObjectView.getName());
 
             case 4:
                 return new TablePrinter(metaDataPanel.getTable(),
-                        "Meta Data: " + currentObjectView.getName());
+                        Bundles.getCommon("metadata")+": " + currentObjectView.getName());
                 
             default:
                 return null;

@@ -20,6 +20,8 @@
 
 package org.underworldlabs.swing;
 
+import org.executequery.localization.Bundles;
+
 import java.awt.Dialog;
 import java.awt.Frame;
 import java.awt.GraphicsConfiguration;
@@ -105,6 +107,11 @@ public abstract class AbstractBaseDialog extends JDialog {
                 dispose();
             }
         };
+    }
+
+    protected String bundleString(String key)
+    {
+        return Bundles.get(getClass(),key);
     }
     
 }

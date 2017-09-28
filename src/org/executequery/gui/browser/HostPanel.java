@@ -36,6 +36,7 @@ import org.executequery.event.ApplicationEvent;
 import org.executequery.event.ConnectionEvent;
 import org.executequery.event.ConnectionListener;
 import org.executequery.gui.forms.AbstractFormObjectViewPanel;
+import org.executequery.localization.Bundles;
 import org.executequery.log.Log;
 import org.executequery.print.TablePrinter;
 import org.underworldlabs.jdbc.DataSourceException;
@@ -110,14 +111,14 @@ public class HostPanel extends AbstractFormObjectViewPanel implements Connection
         javaSqlTypesPanel = new JavaSQLTypesPanel();
 
         tabPane = new JTabbedPane(JTabbedPane.TOP);
-        tabPane.addTab("Connection", connectionPanel);
-        tabPane.addTab("Database Properties", databasePropertiesPanel);
-        tabPane.addTab("SQL Keywords", keyWordsPanel);
-        tabPane.addTab("Data Types", dataTypesPanel);
+        tabPane.addTab(Bundles.getCommon("connection"), connectionPanel);
+        tabPane.addTab(Bundles.getCommon("database-properties"), databasePropertiesPanel);
+        tabPane.addTab(Bundles.getCommon("sql-keywords"), keyWordsPanel);
+        tabPane.addTab(Bundles.getCommon("data-types"), dataTypesPanel);
         tabPane.addTab("java.sql.Types", javaSqlTypesPanel);
         enableConnectionTabs(false);
 
-        setHeaderText("Database Connection");
+        setHeaderText(Bundles.getCommon("database-connection"));
         setHeaderIcon(GUIUtilities.loadIcon("Database24.png"));
         setContentPanel(tabPane);
 
@@ -235,7 +236,7 @@ public class HostPanel extends AbstractFormObjectViewPanel implements Connection
         } catch (DataSourceException e) {
 
             dataTypesPanel.setDataTypeError(e.getExtendedMessage());
-            Log.warning("Error retriving type info for host: " + e.getExtendedMessage());
+            Log.warning(Bundles.getCommon("error.retriving-type-info") + e.getExtendedMessage());
 //            controller.handleException(e);
         }        
     }
@@ -304,7 +305,7 @@ public class HostPanel extends AbstractFormObjectViewPanel implements Connection
     public Printable getPrintable() {
         
         String hostText = hostField != null ? hostField.getText() : "";
-        return new TablePrinter(schemaTable, "Database Server: " + hostText);
+        return new TablePrinter(schemaTable, Bundles.getCommon("database-server") + hostText);
     }
     
     public JTable getTable() {
@@ -335,7 +336,7 @@ public class HostPanel extends AbstractFormObjectViewPanel implements Connection
     private class HostModel extends AbstractTableModel {
         
         private Vector values = new Vector(0);
-        private String header = "Catalog Name";
+        private String header = Bundles.getCommon("catalog-name");
         
         public void setValues(Vector values) {
             this.values = values;

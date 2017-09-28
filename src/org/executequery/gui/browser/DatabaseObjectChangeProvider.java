@@ -106,7 +106,7 @@ public class DatabaseObjectChangeProvider implements Interruptible {
     
     private void execute() {
 
-        interruptibleProgressDialog = new InterruptibleProgressDialog(GUIUtilities.getParentFrame(), "Applying changes", "Please wait...", this);
+        interruptibleProgressDialog = new InterruptibleProgressDialog(GUIUtilities.getParentFrame(), Bundles.getCommon("title.apply-changes"), Bundles.getCommon("message.waiting"), this);
 
         worker = new SwingWorker() {
             
@@ -120,28 +120,28 @@ public class DatabaseObjectChangeProvider implements Interruptible {
                 } catch (DataSourceException e) {
         
                     StringBuilder sb = new StringBuilder();
-                    sb.append("An error occurred applying the specified changes.\n\nThe system returned:\n");
+                    sb.append(Bundles.getCommon("error.apply-changes"));
         
                     Throwable cause = e.getCause();
                     if (cause instanceof NumberFormatException) {
-                        
-                        sb.append("Invalid number for value - ");
+
+                        sb.append(Bundles.getCommon("error.invalid-number"));
                     
                     } else if (cause instanceof ParseException) {
                         
-                        sb.append("Invalid date format for value - ");
+                        sb.append(Bundles.getCommon("error.invalid-date"));
                     }
                     sb.append(e.getExtendedMessage());
                     
                     if (table().hasTableDataChanges()) {
                         
-                        sb.append("\nRollback was issued for all data changes.");
+                        sb.append(Bundles.getCommon("message.rollback-table-data"));
                     } 
 
                     if (table().hasTableDefinitionChanges()) { // for ddl changes in tx 
 
                         table().cancelChanges();
-                        sb.append("\nRollback was issued for all changes.");
+                        sb.append(Bundles.getCommon("message.rollback-definition-changes"));
                     }
 
                     dispose();

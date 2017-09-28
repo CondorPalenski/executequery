@@ -33,6 +33,7 @@ import javax.swing.table.AbstractTableModel;
 
 import org.executequery.GUIUtilities;
 import org.executequery.databaseobjects.NamedObject;
+import org.executequery.localization.Bundles;
 import org.underworldlabs.jdbc.DataSourceException;
 
 /**
@@ -51,14 +52,14 @@ public class MetaKeyPanel extends BrowserNodeBasePanel {
     
     private Map cache;
     
-    private static String HEADER_PREFIX = "Database Object: ";
+    private static String HEADER_PREFIX = Bundles.get(MetaKeyPanel.class,"database-object");
     
     /** the browser's control object */
     private BrowserController controller;
 
     public MetaKeyPanel(BrowserController controller) {
 
-        super("Object Type Name:");
+        super(Bundles.get(MetaKeyPanel.class,"ObjectTypeName"));
         this.controller = controller;
 
         try {
@@ -71,9 +72,9 @@ public class MetaKeyPanel extends BrowserNodeBasePanel {
     
     private void init() throws Exception {
 
-        noValuesLabel = new JLabel("No objects of this type are available.", JLabel.CENTER);
+        noValuesLabel = new JLabel(bundleString("notAvailable"), JLabel.CENTER);
         
-        tablePanel().setBorder(BorderFactory.createTitledBorder("Available Objects"));
+        tablePanel().setBorder(BorderFactory.createTitledBorder(bundleString("AvailableObjects")));
         
         model = new MetaKeyModel();
         table().setModel(model);
@@ -167,7 +168,7 @@ public class MetaKeyPanel extends BrowserNodeBasePanel {
     private class MetaKeyModel extends AbstractTableModel {
         
         private String[] values;
-        private String header = "Object Name";
+        private String header = Bundles.get(MetaKeyPanel.class,"ObjectName");
         
         public MetaKeyModel() {
             values = new String[0];

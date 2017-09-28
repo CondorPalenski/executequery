@@ -63,7 +63,7 @@ public class MoveConnectionToFolderDialog extends BaseDialog {
     
     public MoveConnectionToFolderDialog(DatabaseConnection databaseConnection, ConnectionsTreePanel treePanel) {
 
-        super("Move to folder...", true);
+        super(Bundles.get(MoveConnectionToFolderDialog.class,"title"), true);
         this.databaseConnection = databaseConnection;
         this.treePanel = treePanel;
         init();
@@ -105,7 +105,7 @@ public class MoveConnectionToFolderDialog extends BaseDialog {
             }
         });
         
-        Action newFolderAction = new AbstractAction("New Folder") {
+        Action newFolderAction = new AbstractAction(bundleString("NewFolder")) {
             public void actionPerformed(ActionEvent e) {
                 newFolder(e);
             }
@@ -122,7 +122,7 @@ public class MoveConnectionToFolderDialog extends BaseDialog {
         gbc.insets.left = 7;
         gbc.insets.right = 5;
         gbc.insets.bottom = 5;
-        panel.add(new JLabel("Choose the destination folder"), gbc);
+        panel.add(new JLabel(bundleString("choose-folder")), gbc);
         gbc.gridx++;
         gbc.weightx = 1.0;
         gbc.insets.right = 10;

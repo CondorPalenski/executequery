@@ -26,10 +26,11 @@ import java.util.Map.Entry;
 import javax.swing.table.AbstractTableModel;
 
 import org.executequery.Constants;
+import org.executequery.localization.Bundles;
 
 public class SimpleMetaDataModel extends AbstractTableModel {
 
-    private String[] columns = {"Property", "Value"};
+    private String[] columns = Bundles.getCommons(new String[]{"property", "value"});
     private String[] propertyNames;
     private String[] propertyValues;
     private Map<String, String> map;
